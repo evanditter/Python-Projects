@@ -1,7 +1,6 @@
 import sys
 import time
 
-
 # Constants
 BLACK, WHITE = 0, 1
 VALID_SQUARES = 0x7FBFDFEFF
