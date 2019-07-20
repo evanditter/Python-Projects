@@ -1,4 +1,4 @@
-class Random:
+class Initialize:
     def __init__(self, seed):
         self.__n = seed
 
@@ -11,9 +11,9 @@ class Random:
         return letters[self.next(size)]
 
 
-class Mnemonic:
+class WordCreator:
     def __init__(self, seed):
-        self.__random = Random(seed)
+        self.__random = Initialize(seed)
         self.__follow = {'a': '', 'b': '', 'c': '', 'd': '', 'e': '', 'f': '', 'g': '', 'h': '', 'i': '', 'j': '',
                          'k': '', 'l': '', 'm': '', \
                          'n': '', 'o': '', 'p': '', 'q': '', 'r': '', 's': '', 't': '', 'u': '', 'v': '', 'w': '',
@@ -40,13 +40,13 @@ class Mnemonic:
         random = self.__random
         letters = self.__letters
         num = list(number)
-        mnemonic = ''  #will be the final output for the word constructed
+        final_word = ''  #will be the final output for the word constructed
         f = random.choose(letters[num[0]])
-        mnemonic += f
+        final_word += f
 
         for i in range(len(num) - 1):
             temp = ''
-            last = mnemonic[i]
+            last = final_word[i]
             str = follow[last]
             # print(last, ":",str) used for testing last and str while debugging
             for e in str:
@@ -56,11 +56,11 @@ class Mnemonic:
             if len(temp) == 0:
                 return ''  # returns empty string if no letters left in temp
             f = random.choose(temp)
-            mnemonic += f
+            final_word += f
 
-        return mnemonic
+        return final_word
 
-m = Mnemonic(101)
+m = WordCreator(101)
 
 m.add('about')
 m.add('after')
@@ -325,41 +325,24 @@ m.add('yellow')
 m.add('you')
 m.add('your')
 
-# Given Outputs
-print('"' + m.make('6862377') + '"')  # "ounadrr"
-print('"' + m.make('6862377') + '"')  # "ounadrs"
-print('"' + m.make('6862377') + '"')  # "ntobers"
-print('"' + m.make('6862377') + '"')  # "ouncerr"
-print('"' + m.make('6862377') + '"')  # "ntoadrr"
-print('"' + m.make('6862377') + '"')  # "muncess"
-print('"' + m.make('6862377') + '"')  # "ounadrs"
-print('"' + m.make('6862377') + '"')  # "munadrs"
-print('"' + m.make('6862377') + '"')  # "ouncers"
-print('"' + m.make('6862377') + '"')  # "otoadrr"
 
-print('--------')  # to differentiate the tests
-
-#tests not given in project assignment
-
-print('"' + m.make('2222227') + '"')  # ""
-print('"' + m.make('2222227') + '"')  # "cababas"
-print('"' + m.make('2222227') + '"')  # "cabbabr"
-print('"' + m.make('2222227') + '"')  # "bababbr"
+print('"' + m.make('2222227') + '"')  # "cababar"
+print('"' + m.make('2222227') + '"')  # "cababbr"
+print('"' + m.make('2222227') + '"')  # "bababar"
+print('"' + m.make('2222227') + '"')  # "cabacar"
 
 print('--------')
 
-print('"' + m.make('2322223') + '"')  # "adababe"
-print('"' + m.make('2222223') + '"')  # "bbabbad"
-print('"' + m.make('2222223') + '"')  # "bacabad"
-print('"' + m.make('2222223') + '"')  # "bacabad"
-print('"' + m.make('2222223') + '"')  # "bbababe"
+print('"' + m.make('2322223') + '"')  # "beababe"
+print('"' + m.make('2222223') + '"')  # "abababe"
+print('"' + m.make('2222223') + '"')  # "cabacad"
 
 print('--------')
 
-print('"' + m.make('2862377') + '"')  # "cunadrs"
-print('"' + m.make('2862377') + '"')  # "aunadrr"
-print('"' + m.make('2862377') + '"')  # "cumafrr"
-print('"' + m.make('2862377') + '"')  # "buncerr"
+print('"' + m.make('2633') + '"')  # "ande"
+print('"' + m.make('2633') + '"')  # "code"
+print('"' + m.make('2633') + '"')  # "boee"
+print('"' + m.make('2633') + '"')  # "amee"
 
 print('--------')
 
@@ -371,9 +354,15 @@ print('"' + m.make('9999999') + '"')  # ""
 print('--------')
 
 #Works with different amount of digits as well, was trying to get cell
-print('"' + m.make('2355') + '"')  # "cell"
-print('"' + m.make('2355') + '"')  # "cell"
+print('"' + m.make('2355') + '"')  # "bell"
 print('"' + m.make('2355') + '"')  # "bell"
 print('"' + m.make('2355') + '"')  # "cell"
-print('"' + m.make('2355') + '"')  # "afll"
 print('"' + m.make('2355') + '"')  # "cell"
+
+print('--------')
+
+#Works with different amount of digits as well, was trying to get hello
+print('"' + m.make('43556') + '"')  # "gello"
+print('"' + m.make('43556') + '"')  # "hello"
+print('"' + m.make('43556') + '"')  # "ifllo"
+print('"' + m.make('43556') + '"')  # "hello"
