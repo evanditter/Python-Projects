@@ -1,3 +1,8 @@
+"""
+Checks bot based on Arthur Samuel's algorithm, plus added aB iterative deepening to increase speed of the bot.
+
+"""
+
 import sys
 import time
 
