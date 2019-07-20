@@ -1,6 +1,6 @@
 """
-Checks bot based on Arthur Samuel's algorithm, plus added aB iterative deepening to increase speed of the bot.
-
+Checkers bot based on Arthur Samuel's algorithm, plus I added iterative deepening with alpha-beta pruning
+to increase the speed and performance of the bot.
 """
 
 import sys
